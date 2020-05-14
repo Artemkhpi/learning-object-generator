@@ -1,0 +1,31 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="learningobject-generator"/>
+    <ao key="ao-module">
+        <description>The module configuring the Active Objects service used by this plugin</description>
+        <entity>com.learningobject.generator.service.model.BaseEntity</entity>
+        <entity>com.learningobject.generator.service.model.ArticleContentAO</entity>
+        <entity>com.learningobject.generator.service.model.KeyWordAO</entity>
+        <entity>com.learningobject.generator.service.model.ArticleAO</entity>
+    </ao>
+    <rest key="learning-object-rest-resource" path="/learningobject" version="1.0"/>
+    <!-- add our web resources -->
+    <web-resource key="learningobject-generator-resources" name="learningobject-generator Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="learningobject-generator.css" location="/css/learningobject-generator.css"/>
+        <resource type="download" name="learningobject-generator.js" location="/js/learningobject-generator.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>learningobject-generator</context>
+    </web-resource>
+    
+</atlassian-plugin>
